@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOOM // EXNESS TERMINAL</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot" id="status-dot"></span>
+      <span class="title">BOOM TERMINAL</span>
+      <span class="badge" id="acct-label">Exness Real</span>
+    </div>
+    <div class="meta">
+      <span id="last-run">Last run: --</span>
+      <button id="refresh-btn" title="Refresh data">↻</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- KPI Strip -->
+    <section class="card kpi-strip" id="kpi-strip">
+      <div class="kpi"><span class="k-label">NET P&amp;L</span><span class="k-val" id="k-net">--</span></div>
+      <div class="kpi"><span class="k-label">WIN RATE</span><span class="k-val" id="k-wr">--</span></div>
+      <div class="kpi"><span class="k-label">TRADES (W/L)</span><span class="k-val" id="k-trades">--</span></div>
+      <div class="kpi"><span class="k-label">PROFIT FACTOR</span><span class="k-val" id="k-pf">--</span></div>
+      <div class="kpi"><span class="k-label">7D P&amp;L</span><span class="k-val" id="k-7d">--</span></div>
+      <div class="kpi"><span class="k-label">MAX DD</span><span class="k-val" id="k-dd">--</span></div>
+      <div class="kpi"><span class="k-label">SLOTS</span><span class="k-val" id="k-slots">--</span></div>
+      <div class="kpi"><span class="k-label">STREAK</span><span class="k-val" id="k-streak">--</span></div>
+    </section>
+
+    <!-- Equity Curve -->
+    <section class="card span-2">
+      <div class="card-head">
+        <h2>CUMULATIVE P&amp;L CURVE</h2>
+        <span class="sub" id="bal-line">Hard stop: $14.00</span>
+      </div>
+      <div class="chart-wrap">
+        <svg id="pnl-chart" viewBox="0 0 600 180" preserveAspectRatio="none"></svg>
+      </div>
+    </section>
+
+    <!-- Thought Process & Latest Decision -->
+    <section class="card">
+      <div class="card-head">
+        <h2>THOUGHT PROCESS &amp; DECISION</h2>
+        <span class="sub" id="dec-age">--</span>
+      </div>
+      <pre class="terminal-text" id="thought-box">Waiting for data...</pre>
+      <div class="pill-row" id="sentiment-pills"></div>
+    </section>
+
+    <!-- Next Actions -->
+    <section class="card">
+      <div class="card-head">
+        <h2>NEXT ACTIONS &amp; GUARDS</h2>
+        <span class="sub" id="gate-pill">--</span>
+      </div>
+      <ul class="action-list" id="actions-list"></ul>
+    </section>
+
+    <!-- Open Positions -->
+    <section class="card">
+      <div class="card-head">
+        <h2>OPEN POSITIONS</h2>
+        <span class="sub" id="snap-ts">--</span>
+      </div>
+      <div id="positions-box" class="empty">No open positions</div>
+    </section>
+
+    <!-- Scanned Candidates -->
+    <section class="card">
+      <div class="card-head">
+        <h2>LAST SCAN CANDIDATES</h2>
+        <span class="sub" id="scan-utc">--</span>
+      </div>
+      <div class="table-wrap">
+        <table id="cand-table">
+          <thead><tr><th>SYM</th><th>PLAY</th><th>SIDE</th><th>SCORE</th><th>DEC</th><th>REASON</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Playbook & Symbol Performance -->
+    <section class="card">
+      <div class="card-head"><h2>PLAYBOOK METRICS</h2></div>
+      <div class="table-wrap">
+        <table id="play-table">
+          <thead><tr><th>PLAYBOOK</th><th>N</th><th>WR</th><th>AVG</th><th>ADJ</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>SYMBOL METRICS</h2></div>
+      <div class="table-wrap">
+        <table id="sym-table">
+          <thead><tr><th>SYMBOL</th><th>N</th><th>WR</th><th>AVG</th><th>ADJ</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Recent Closed Trades -->
+    <section class="card span-2">
+      <div class="card-head"><h2>RECENT CLOSED TRADES</h2></div>
+      <div class="table-wrap">
+        <table id="trades-table">
+          <thead><tr><th>TIME (UTC)</th><th>SYM</th><th>SIDE</th><th>PLAY</th><th>OPEN</th><th>CLOSE</th><th>P&amp;L</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Recent Runner Log -->
+    <section class="card span-2">
+      <div class="card-head"><h2>AGENT RUNNER LOG</h2></div>
+      <div class="runs-list" id="runs-list"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span id="gen-at">Generated: --</span>
+    <span id="foot-note"></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
